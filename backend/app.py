@@ -42,14 +42,6 @@ def create_app() -> Flask:
     with app.app_context():
         get_db()
 
-    try:
-        print("Loading pest model...")
-        load_pest_model()
-        print("Pest model loaded successfully")
-    except Exception as e:
-        print("PEST MODEL LOAD FAILED")
-        print(str(e))
-
     # ── Blueprints ────────────────────────────────────────────────────────────
     app.register_blueprint(auth_bp)
     app.register_blueprint(lands_bp)
