@@ -70,6 +70,13 @@ def create_app() -> Flask:
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
+# Create application for Gunicorn
+application = create_app()
+
+# Local development
 if __name__ == "__main__":
-    application = create_app()
-    application.run(host="0.0.0.0", port=5000, debug=application.config.get("DEBUG", False))
+    application.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=application.config.get("DEBUG", False)
+    )
