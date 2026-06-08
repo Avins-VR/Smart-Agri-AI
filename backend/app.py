@@ -13,6 +13,7 @@ from routes.auth import auth_bp
 from routes.lands import lands_bp
 
 from routes.ml        import ml_bp
+from services.pest_service import load_pest_model
 from routes.weather   import weather_bp
 from routes.advisory  import advisory_bp
 from routes.chatbot   import chatbot_bp
@@ -40,6 +41,14 @@ def create_app() -> Flask:
     # ── Database (eager connect so startup fails fast on bad URI) ─────────────
     with app.app_context():
         get_db()
+
+    try:
+        print("Loading pest model...")
+        load_pest_model()
+        print("Pest model loaded successfully")
+    except Exception as e:
+        print("PEST MODEL LOAD FAILED")
+        print(str(e))
 
     # ── Blueprints ────────────────────────────────────────────────────────────
     app.register_blueprint(auth_bp)

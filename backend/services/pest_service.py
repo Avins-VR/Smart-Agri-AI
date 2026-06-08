@@ -38,6 +38,8 @@ def load_pest_model():
         "best_model.pth"
     )
 
+    print("MODEL PATH:", model_path)
+    print("MODEL EXISTS:", os.path.exists(model_path))
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"Pest model not found at: {model_path}")
 

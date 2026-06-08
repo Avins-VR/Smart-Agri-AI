@@ -25,6 +25,7 @@ from services.irrigation_service    import calculate_irrigation_need
 from datetime import date as date_cls
 from datetime import datetime
 import time
+import traceback
 
 # Simple in-memory cache
 NPK_HISTORY_CACHE = {}
@@ -328,28 +329,42 @@ def npk_history():
 # ══════════════════════════════════════════════════════════════════════════════
 # POST /api/ml/pest-predict
 # ══════════════════════════════════════════════════════════════════════════════
-
 @ml_bp.route("/pest-predict", methods=["POST"])
 @jwt_required
 def pest_predict_endpoint():
-    """
-    Classify crop image as Healthy or Pest Attack.
 
-    Request: multipart/form-data with field "image" (JPG/PNG/JPEG)
-
-    Response 200
-    ------------
-    { "success": true, "prediction": "Healthy", "confidence": 97.43 }
-    """
     if "image" not in request.files:
-        return jsonify({"success": False, "message": "No image file provided. Send as multipart field 'image'."}), 400
+        return jsonify({
+            "success": False,
+            "message": "No image file provided."
+        }), 400
 
     try:
-        img  = Image.open(request.files["image"])
+        print("Opening image...")
+
+        img = Image.open(request.files["image"])
+
+        print("Running prediction...")
+
         pred, conf = predict_pest(img)
-        return jsonify({"success": True, "prediction": pred, "confidence": conf}), 200
+
+        print(f"Prediction success: {pred} ({conf}%)")
+
+        return jsonify({
+            "success": True,
+            "prediction": pred,
+            "confidence": conf
+        }), 200
+
     except Exception as exc:
-        return jsonify({"success": False, "message": str(exc)}), 500
+        print("========== PEST ERROR ==========")
+        traceback.print_exc()
+        print("================================")
+
+        return jsonify({
+            "success": False,
+            "message": str(exc)
+        }), 500
 
 
 # ══════════════════════════════════════════════════════════════════════════════
