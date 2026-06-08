@@ -1,0 +1,17 @@
+streamlit
+pandas
+numpy
+plotly
+requests
+joblib
+scikit-learn
+pytz
+torch
+torchvision
+timm
+Pillow
+opencv-python-headless
+streamlit-js-eval
+folium
+streamlit-folium
+gdown

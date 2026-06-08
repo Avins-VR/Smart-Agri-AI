@@ -1,0 +1,16 @@
+train: ../train
+val: ../valid
+test: ../test
+
+nc: 2
+
+names:
+  0: Healthy
+  1: Pest Attack
+
+roboflow:
+  workspace: masterai
+  project: pest-detection-mdrns
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/masterai/pest-detection-mdrns/dataset/1

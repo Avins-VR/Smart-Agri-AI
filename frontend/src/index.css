@@ -1,0 +1,53 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-primary:   #4ade80;
+  --green-dark:      #16a34a;
+  --green-deeper:    #15803d;
+  --green-text:      #c8e8b2;
+  --green-muted:     rgba(74,222,128,0.4);
+  --green-border:    rgba(74,222,128,0.15);
+  --bg-card:         rgba(10,22,14,0.85);
+  --bg-deep:         rgba(8,12,16,1);
+  --text-primary:    #e2e8f0;
+  --yellow:          #f5c842;
+  --red:             #fa5d5d;
+  --blue:            #5db8fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  background: #080c10;
+  color: #d4e8c2;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(10,22,14,0.5); }
+::-webkit-scrollbar-thumb { background: rgba(74,222,128,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(74,222,128,0.35); }
+
+input::placeholder { color: rgba(74,222,128,0.25); }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #0f1e12 inset !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+input[type="number"]::-webkit-inner-spin-button { opacity: 0.3; filter: invert(1); }
+select option { background: #0a160e; color: #e2e8f0; }
+
+/* Leaflet override */
+.leaflet-control-attribution { display: none !important; }
+
+@keyframes spin       { to { transform: rotate(360deg); } }
+@keyframes ping       { 75%,100% { transform: scale(1.5); opacity: 0; } }
+@keyframes fadeIn     { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+@keyframes pulse      { 0%,100% { opacity:0.15; } 50% { opacity:0.3; } }
+@keyframes shimmer    { 0% { background-position:0% 0; } 100% { background-position:200% 0; } }
+@keyframes slideUp    { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
