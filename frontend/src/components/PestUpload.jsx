@@ -1,5 +1,5 @@
 // src/components/PestUpload.jsx
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaUpload, FaMicroscope } from "react-icons/fa";
 import { useFarm } from "../context/FarmContext";
 import { mlApi } from "../services/api";
@@ -8,9 +8,7 @@ import { computeHealthScore, getHealthStatus } from "../utils/farmLogic";
 export default function PestUpload() {
   const { liveData, pestPrediction, pestConfidence, pestImageUploaded,
           setPestPrediction, setPestConfidence, setPestImageUploaded } = useFarm();
-  const [preview, setPreview] = useState(
-    localStorage.getItem("pestPreview")
-  );
+  const [preview, setPreview] = useState(null);
   const [file, setFile] = useState(null);
   const [running, setRunning] = useState(false);
 
@@ -20,40 +18,31 @@ export default function PestUpload() {
 
   const inputRef = useRef(null);
 
-  useState(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener(
-      "resize",
-      handleResize
-    );
+    window.addEventListener("resize", handleResize);
 
-    return () =>
-      window.removeEventListener(
-        "resize",
-        handleResize
-      );
-  });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleFile = (f) => {
     if (!f) return;
+
     setFile(f);
+
     const reader = new FileReader();
+
     reader.onload = (e) => {
-
       setPreview(e.target.result);
-
-      localStorage.setItem(
-        "pestPreview",
-        e.target.result
-      );
-
     };
+
     reader.readAsDataURL(f);
   };
-
   const handlePredict = async () => {
     if (!file) return;
     setRunning(true);
@@ -64,21 +53,6 @@ export default function PestUpload() {
       setPestPrediction(res.data.prediction);
       setPestConfidence(res.data.confidence);
       setPestImageUploaded(true);
-
-      localStorage.setItem(
-        "pestPrediction",
-        res.data.prediction
-      );
-
-      localStorage.setItem(
-        "pestConfidence",
-        res.data.confidence
-      );
-
-      localStorage.setItem(
-        "pestImageUploaded",
-        "true"
-      );
     } catch (err) {
       console.error("Pest predict failed:", err);
       alert("Pest prediction failed. Is the Flask ML endpoint running?");

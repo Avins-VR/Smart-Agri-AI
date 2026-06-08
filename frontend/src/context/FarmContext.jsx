@@ -33,17 +33,11 @@ export function FarmProvider({ children }) {
   const selectedVariety = variety || varietyOptions[0];
 
   // ── Pest state ───────────────────────────────────────────────────────────────
-  const [pestPrediction, setPestPrediction] = useState(
-    localStorage.getItem("pestPrediction") || "Healthy"
-  );
+  const [pestPrediction, setPestPrediction] = useState("Healthy");
 
-  const [pestConfidence, setPestConfidence] = useState(
-    Number(localStorage.getItem("pestConfidence")) || 0
-  );
+  const [pestConfidence, setPestConfidence] = useState(0);
 
-  const [pestImageUploaded, setPestImageUploaded] = useState(
-    localStorage.getItem("pestImageUploaded") === "true"
-  );
+  const [pestImageUploaded, setPestImageUploaded] = useState(false);
 
   // ── Advisory cache ────────────────────────────────────────────────────────────
   const [advisoryCache,    setAdvisoryCache]    = useState(null);
