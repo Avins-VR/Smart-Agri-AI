@@ -26,12 +26,14 @@ def create_app() -> Flask:
     app.config.from_object(cfg)
 
     # ── CORS ──────────────────────────────────────────────────────────────────
+    allowed_origins = os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:5173"
+    ).split(",")
+
     CORS(
         app,
-        resources={r"/*": {"origins": [
-            "http://localhost:5173",
-            os.getenv("FRONTEND_URL")
-        ]}},
+        resources={r"/*": {"origins": allowed_origins}},
         supports_credentials=True
     )
 
