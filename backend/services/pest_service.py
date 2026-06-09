@@ -41,7 +41,7 @@ def load_pest_model():
         project_root,
         "ml_models",
         "pest",
-        "best_model_fp16.pth"
+        "best_model.pth"
     )
 
     if not os.path.exists(model_path):
