@@ -13,7 +13,6 @@ from routes.auth import auth_bp
 from routes.lands import lands_bp
 
 from routes.ml        import ml_bp
-from services.pest_service import load_pest_model
 from routes.weather   import weather_bp
 from routes.advisory  import advisory_bp
 from routes.chatbot   import chatbot_bp
