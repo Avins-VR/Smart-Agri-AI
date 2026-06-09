@@ -41,17 +41,21 @@ def load_pest_model():
         project_root,
         "ml_models",
         "pest",
-        "best_model.pth"
+        "best_model_fp16.pth"
     )
 
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Pest model not found at: {model_path}")
+        raise FileNotFoundError(
+            f"Pest model not found at: {model_path}"
+        )
 
-    # EXACT SAME MODEL AS TRAINING
-    model = timm.create_model("efficientnet_b0", pretrained=False)
+    model = timm.create_model(
+        "efficientnet_b0",
+        pretrained=False
+    )
 
-    # EXACT SAME CLASSIFIER
     in_features = model.classifier.in_features
+
     model.classifier = nn.Sequential(
         nn.Dropout(0.50),
         nn.Linear(in_features, 128),
@@ -60,16 +64,19 @@ def load_pest_model():
         nn.Linear(128, 2),
     )
 
-    # LOAD MODEL
-    model.load_state_dict(
-        torch.load(model_path, map_location=torch.device("cpu"))
+    state_dict = torch.load(
+        model_path,
+        map_location=torch.device("cpu")
     )
+
+    model.load_state_dict(state_dict)
+
     model.eval()
+
+    print("MODEL READY")
 
     _pest_model = model
     return _pest_model
-
-    print("MODEL READY")
 
 
 def preprocess_pest_image(image: Image.Image) -> torch.Tensor:
