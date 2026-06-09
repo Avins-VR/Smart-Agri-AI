@@ -20,16 +20,22 @@ def load_pest_model():
     Load EfficientNet-B0 pest classifier from disk.
     Exact same architecture as training — no changes.
     """
+    print("LOAD_PEST_MODEL CALLED")
+
     global _pest_model
 
     if _pest_model is not None:
+        print("USING CACHED MODEL")
         return _pest_model
+
+    print("LOADING MODEL FROM DISK...")
 
     import timm
 
     project_root = os.path.dirname(
             os.path.dirname(os.path.abspath(__file__))
     )
+    print("MODEL WEIGHTS LOADED")
 
     model_path = os.path.join(
         project_root,
@@ -62,6 +68,8 @@ def load_pest_model():
 
     _pest_model = model
     return _pest_model
+
+    print("MODEL READY")
 
 
 def preprocess_pest_image(image: Image.Image) -> torch.Tensor:
@@ -98,13 +106,23 @@ def predict_pest(image: Image.Image) -> tuple[str, float]:
     """
     CLASS_NAMES = ["Healthy", "Pest Attack"]
 
-    model      = load_pest_model()
+    print("START PREDICTION")
+
+    model = load_pest_model()
+
+    print("MODEL OBTAINED")
+
     img_tensor = preprocess_pest_image(image)
 
+    print("IMAGE PREPROCESSED")
+
+    print("STARTING INFERENCE")
     with torch.no_grad():
         outputs       = model(img_tensor)
         probabilities = torch.softmax(outputs, dim=1)
         confidence, prediction = torch.max(probabilities, 1)
+    
+    print("INFERENCE FINISHED")
 
     predicted_class  = CLASS_NAMES[prediction.item()]
     confidence_score = round(confidence.item() * 100, 2)
