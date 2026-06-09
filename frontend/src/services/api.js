@@ -156,9 +156,15 @@ export const mlApi = {
       { headers: authHeaders() }
     ),
   pestPredict: (formData) =>
-    axios.post(`${BASE}/ml/pest-predict`, formData, {
-      headers: { ...authHeaders(), "Content-Type": "multipart/form-data" },
-    }),
+    axios.post(
+      `${BASE}/ml/pest-predict`,
+      formData,
+      {
+        headers: {
+          ...authHeaders()
+        }
+      }
+    ),
 
   healthHistory: (payload) =>
     axios.post(

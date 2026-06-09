@@ -333,24 +333,47 @@ def npk_history():
 @ml_bp.route("/pest-predict", methods=["POST"])
 @jwt_required
 def pest_predict_endpoint():
-    """
-    Classify crop image as Healthy or Pest Attack.
 
-    Request: multipart/form-data with field "image" (JPG/PNG/JPEG)
-
-    Response 200
-    ------------
-    { "success": true, "prediction": "Healthy", "confidence": 97.43 }
-    """
-    if "image" not in request.files:
-        return jsonify({"success": False, "message": "No image file provided. Send as multipart field 'image'."}), 400
+    print("PEST ENDPOINT HIT")
 
     try:
-        img  = Image.open(request.files["image"])
+
+        if "image" not in request.files:
+            print("NO IMAGE FOUND")
+
+            return jsonify({
+                "success": False,
+                "message": "No image file provided"
+            }), 400
+
+        image_file = request.files["image"]
+
+        print("FILENAME:", image_file.filename)
+
+        img = Image.open(image_file)
+
+        print("IMAGE OPENED")
+
         pred, conf = predict_pest(img)
-        return jsonify({"success": True, "prediction": pred, "confidence": conf}), 200
-    except Exception as exc:
-        return jsonify({"success": False, "message": str(exc)}), 500
+
+        print("PREDICTION:", pred)
+        print("CONFIDENCE:", conf)
+
+        return jsonify({
+            "success": True,
+            "prediction": pred,
+            "confidence": conf
+        })
+
+    except Exception as e:
+
+        print("PEST ERROR:")
+        traceback.print_exc()
+
+        return jsonify({
+            "success": False,
+            "message": str(e)
+        }), 500
 
 
 # ══════════════════════════════════════════════════════════════════════════════

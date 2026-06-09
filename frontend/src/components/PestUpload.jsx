@@ -55,7 +55,15 @@ export default function PestUpload() {
       setPestImageUploaded(true);
     } catch (err) {
       console.error("Pest predict failed:", err);
-      alert("Pest prediction failed. Is the Flask ML endpoint running?");
+
+      console.log("Response:", err?.response);
+      console.log("Data:", err?.response?.data);
+      console.log("Status:", err?.response?.status);
+
+      alert(
+        err?.response?.data?.message ||
+        "Pest prediction failed"
+      );
     } finally {
       setRunning(false);
     }
