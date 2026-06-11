@@ -102,7 +102,7 @@ export default function Dashboard() {
         style={{
           width: isMobile
             ? (sidebarOpen ? "280px" : "0px")
-            : (sidebarOpen ? 380 : 95),
+            : (sidebarOpen ? 360 : 95),
 
           background:"#0b1109",
           borderRight:"1px solid #1e3d1a",
@@ -259,7 +259,7 @@ export default function Dashboard() {
                 style={({ isActive }) => ({
                   display:"flex", alignItems:"center", gap:10,
                   padding: sidebarOpen ? "9px 12px" : "9px",
-                  borderRadius:8, marginBottom:20, textDecoration:"none",
+                  borderRadius:8, marginBottom:17, textDecoration:"none",
                   background: isActive ? "rgba(74,222,128,0.1)" : "none",
                   color:      isActive ? "#4ade80" : "rgba(74,222,128,0.5)",
                   border:     isActive ? "1px solid rgba(74,222,128,0.2)" : "1px solid transparent",

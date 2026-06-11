@@ -174,7 +174,7 @@ export default function DashboardHome() {
       {/* Row 1: core metrics */}
       <div style={{ display:"grid",gridTemplateColumns:isMobile
         ? "1fr"
-        : "repeat(auto-fill,minmax(200px,1fr))",gap:12,marginBottom:12 }}>
+        : "repeat(auto-fill,minmax(200px,1fr))",gap:13,marginBottom:13 }}>
         <MetricCard icon={FaTint}            label="Soil Moisture"  value={`${liveData.moistureNumeric}%`} badge={moistureBadge(liveData.moistureLabel)} />
         <MetricCard icon={FaTemperatureHigh} label="Temperature"    value={`${liveData.temp}°C`}           badge={tempBadge(liveData.temp)} />
         <MetricCard icon={FaCloudRain}       label="Rain Today"     value={liveData.rain}                  badge={<Badge text={liveData.rain === "Yes" ? "Rain" : "Clear"} variant={liveData.rain === "Yes" ? "blue" : "green"} />} />
@@ -184,7 +184,7 @@ export default function DashboardHome() {
       {/* Row 2: farm status */}
       <div style={{ display:"grid",gridTemplateColumns:isMobile
         ? "1fr"
-        : "repeat(auto-fill,minmax(200px,1fr))",gap:12,marginBottom:24 }}>
+        : "repeat(auto-fill,minmax(200px,1fr))",gap:13,marginBottom:24 }}>
         <MetricCard icon={FaSeedling}  label="Crop Stage"      value={liveData.cropStage}       badge={stageBadge(liveData.cropStage)} />
         <MetricCard icon={FaHeartbeat} label="Health Score"    value={`${liveData.health}/100`} badge={<Badge text={hs.label} variant={hs.badge} />} />
         <MetricCard icon={FaBug}       label="Pest Detection"  value={liveData.pest}            badge={pestBadge(liveData.pest)} />
@@ -210,7 +210,7 @@ export default function DashboardHome() {
       {/* Pest upload */}
       <SectionHead><FaBug style={{ display:"inline",marginRight:8 }} />Pest Image Classification</SectionHead>
       <AlertCard variant="info">
-        Upload a crop leaf / field image to classify <strong>Healthy</strong> vs <strong>Pest Attack</strong> using EfficientNetB0. The result updates the Pest card and Health Score automatically.
+           Upload a crop image to instantly detect <strong>pest attacks</strong>, assess <strong>crop health</strong>, and receive <strong>AI-powered recommendations</strong> for smarter <strong>farm management</strong>.
       </AlertCard>
       <div style={{ marginTop:12 }}>
         <PestUpload />
@@ -223,7 +223,7 @@ export default function DashboardHome() {
         : "repeat(3,1fr)",gap:12,marginBottom:24 }}>
         <MetricCard icon={FaWater} label="Irrigation Needed" value={irrActivated ? "Yes" : "No"} badge={<Badge text={irrActivated ? "Active" : "Inactive"} variant={irrActivated ? "green" : "blue"} />} />
         <MetricCard icon={FaTint}  label="Volume (L/acre)"   value={irrVolume}                   badge={<Badge text="Today" variant="blue" />} />
-        <MetricCard icon={null}    label="Duration (min)"    value={`${irrDuration} min`}        badge={<Badge text="Today" variant="blue" />} />
+        <MetricCard icon={null}    label="Duration (min)"    value={`${irrDuration.toFixed(2)} min`}        badge={<Badge text="Today" variant="blue" />} />
       </div>
 
       {/* Smart Alerts */}
