@@ -11,7 +11,6 @@ from config import get_config
 from db import get_db
 from routes.auth import auth_bp
 from routes.lands import lands_bp
-from services.pest_service import load_pest_model
 
 from routes.ml        import ml_bp
 from routes.weather   import weather_bp
@@ -42,10 +41,6 @@ def create_app() -> Flask:
     with app.app_context():
         get_db()
 
-    print("PRELOADING PEST MODEL...")
-    load_pest_model()
-    print("PEST MODEL READY")
-    
     # ── Blueprints ────────────────────────────────────────────────────────────
     app.register_blueprint(auth_bp)
     app.register_blueprint(lands_bp)

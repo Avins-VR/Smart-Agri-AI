@@ -8,7 +8,6 @@ from app.py — no logic changes.
 import os
 import torch
 import torch.nn as nn
-import time
 from torchvision import transforms
 from PIL import Image
 
@@ -77,8 +76,6 @@ def load_pest_model():
 
     model.load_state_dict(state_dict)
 
-    model.half()
-
     model.eval()
 
     print("MODEL READY")
@@ -123,27 +120,21 @@ def predict_pest(image: Image.Image) -> tuple[str, float]:
 
     print("START PREDICTION")
 
-    t1 = time.time()
-
     model = load_pest_model()
-
-    print("MODEL LOAD TIME:", time.time() - t1)
 
     print("MODEL OBTAINED")
 
     img_tensor = preprocess_pest_image(image)
-    img_tensor = img_tensor.half()
 
     print("IMAGE PREPROCESSED")
 
     print("STARTING INFERENCE")
-    t2 = time.time()
     with torch.no_grad():
         outputs       = model(img_tensor)
         probabilities = torch.softmax(outputs, dim=1)
         confidence, prediction = torch.max(probabilities, 1)
     
-    print("INFERENCE TIME:", time.time() - t2)
+    print("INFERENCE FINISHED")
 
     predicted_class  = CLASS_NAMES[prediction.item()]
     confidence_score = round(confidence.item() * 100, 2)
