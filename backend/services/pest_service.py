@@ -57,11 +57,16 @@ def load_pest_model():
     in_features = model.classifier.in_features
 
     model.classifier = nn.Sequential(
+
         nn.Dropout(0.50),
-        nn.Linear(in_features, 128),
+
+        nn.Linear(in_features, 64),
+
         nn.ReLU(),
+
         nn.Dropout(0.40),
-        nn.Linear(128, 2),
+
+        nn.Linear(64, 2)
     )
 
     state_dict = torch.load(
