@@ -25,7 +25,6 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_object(cfg)
 
-    # ── CORS ──────────────────────────────────────────────────────────────────
     allowed_origins = os.getenv(
         "ALLOWED_ORIGINS",
         "http://localhost:5173"
