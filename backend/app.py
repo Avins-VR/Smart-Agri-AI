@@ -11,6 +11,7 @@ from config import get_config
 from db import get_db
 from routes.auth import auth_bp
 from routes.lands import lands_bp
+from services.pest_service import load_pest_model
 
 from routes.ml        import ml_bp
 from routes.weather   import weather_bp
@@ -73,6 +74,10 @@ def create_app() -> Flask:
 # ── Entry point ───────────────────────────────────────────────────────────────
 # Create application for Gunicorn
 application = create_app()
+
+print("PRELOADING PEST MODEL...")
+load_pest_model()
+print("PEST MODEL READY")
 
 # Local development
 if __name__ == "__main__":

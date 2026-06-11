@@ -76,6 +76,8 @@ def load_pest_model():
 
     model.load_state_dict(state_dict)
 
+    model.float()
+
     model.eval()
 
     print("MODEL READY")
