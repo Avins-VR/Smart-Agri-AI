@@ -71,7 +71,7 @@ def load_pest_model():
 
     state_dict = torch.load(
         model_path,
-        map_location=torch.device("cpu")
+        map_location="cpu"
     )
 
     model.load_state_dict(state_dict)
