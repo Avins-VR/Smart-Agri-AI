@@ -1,16 +1,267 @@
-# React + Vite
+# Smart Agri AI - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Smart Agri AI is an AI-Powered Farm Intelligence agriculture management platform designed to help farmers make data-driven decisions through machine learning, weather intelligence, and real-time farm monitoring.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository contains the frontend application built using React and Vite, providing an interactive dashboard for monitoring crop health, soil moisture, nutrient status, irrigation recommendations, pest detection, and AI-powered farming assistance.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Key Features
 
-## Expanding the ESLint configuration
+### 📊 Smart Dashboard
+- Real-time farm monitoring
+- Live weather insights
+- Crop health tracking
+- Smart farm alerts
+- Historical trend visualization
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 💧 Soil Moisture Monitoring
+- AI-based soil moisture prediction
+- Moisture status visualization
+- Historical moisture analysis
+- Irrigation support
+
+### 🌿 Nutrient Status Analysis
+- NPK estimation using Machine Learning
+- Nutrient health indicators
+- Fertilizer recommendations
+- Soil nutrient monitoring
+
+### 🌱 Crop Stage Tracking
+- Automatic crop growth stage identification
+- Crop age calculation
+- Stage-based recommendations
+
+### ❤️ Crop Health Assessment
+- Health score generation
+- Growth performance monitoring
+- AI-powered crop evaluation
+
+### 🐛 Pest Detection
+- Crop image upload
+- EfficientNet-B0 based pest classification
+- Healthy vs Pest Attack detection
+- Automatic health score updates
+
+### 🚿 Irrigation Management
+- Smart irrigation recommendations
+- Water volume estimation
+- Irrigation duration prediction
+- Urgency-based irrigation alerts
+
+### 🌦 Rain History Analysis
+- Weather monitoring
+- Rainfall history visualization
+- Climate-aware farming support
+
+### 🤖 AI Advisory System
+- Crop-specific recommendations
+- Weather-aware suggestions
+- Farm management guidance
+
+### 💬 AI Farm Assistant
+- Agriculture-focused chatbot
+- Farming guidance
+- Crop management support
+- Instant AI-powered assistance
+
+---
+
+## 🛠 Technology Stack
+
+### Frontend
+- React.js
+- Vite
+- React Router DOM
+- React Icons
+- Recharts
+- Axios
+- CSS3
+
+### Backend Communication
+- REST APIs
+- Flask Backend Integration
+
+### AI/ML Integration
+- Soil Moisture Prediction
+- NPK Prediction
+- Pest Detection
+- Smart Advisory Engine
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+│
+├── assets/
+│
+├── components/
+│   ├── AdvisoryCard.jsx
+│   ├── AlertCard.jsx
+│   ├── Badge.jsx
+│   ├── ChatBot.jsx
+│   ├── HealthGauge.jsx
+│   ├── LoadingSpinner.jsx
+│   ├── LocationMap.jsx
+│   ├── MetricCard.jsx
+│   ├── PestUpload.jsx
+│   └── SectionHeader.jsx
+│
+├── context/
+│   └── FarmContext.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Dashboard.jsx
+│   ├── DashboardHome.jsx
+│   ├── SoilMoisture.jsx
+│   ├── NutrientStatus.jsx
+│   ├── CropHealth.jsx
+│   ├── Irrigation.jsx
+│   ├── RainHistory.jsx
+│   ├── Advisory.jsx
+│   ├── Chatbot.jsx
+│   ├── Login.jsx
+│   └── Signup.jsx
+│
+├── services/
+│   └── api.js
+│
+├── utils/
+│   └── farmLogic.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Smart-Agri-AI.git
+```
+
+Navigate to frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.development` file:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Create a `.env.production` file:
+
+```env
+VITE_API_URL=https://your-backend-url.com/api
+```
+
+---
+
+## ▶️ Running the Application
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Application runs at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🏗 Production Build
+
+Create production build:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 📈 AI Modules Integrated
+
+| Module | Model |
+|----------|----------|
+| Soil Moisture Prediction | Random Forest |
+| NPK Prediction | Random Forest |
+| Pest Detection | EfficientNet-B0 |
+| Crop Health Evaluation | AI-Based Scoring |
+| Advisory System | Rule-Based Intelligence |
+
+---
+
+## 📱 Main Dashboard Modules
+
+- Dashboard Overview
+- Soil Moisture Monitoring
+- Nutrient Status Analysis
+- Crop Stage Tracking
+- Crop Health Assessment
+- Irrigation Management
+- Rain History
+- AI Advisory
+- AI Chatbot
+
+---
+
+## 🌟 Highlights
+
+- Real-Time Farm Monitoring
+- Responsive User Interface
+- AI-Powered Insights
+- Smart Irrigation Recommendations
+- Weather-Based Decision Support
+- Machine Learning Integration
+- Interactive Data Visualizations
+- Multi-Land Management Support
+- Crop Health Analytics
+- Pest Detection Using Deep Learning
+
+---
+
+## 👨‍💻 Author
+
+### Avins R
+
+AI & Data Science Student  
+AI/ML Developer
+---
+
+## 📄 License
+
+This project is developed for research, and agricultural innovation purposes.
+
+© 2026 Smart Agri AI. All Rights Reserved.

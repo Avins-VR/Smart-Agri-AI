@@ -5,6 +5,8 @@ Smart Agri AI is a AI-Powered Farm Intelligence agriculture platform that combin
 
 The platform enables farmers to register multiple lands, monitor each farm independently, receive AI-powered recommendations, and track crop health throughout the cultivation lifecycle.
 
+🔗 Live Demo: https://smart-agri-ai-farm.netlify.app
+
 ---
 
 # 🚀 Features
@@ -576,3 +578,17 @@ AI/ML Developer
 
 GitHub:
 https://github.com/Avins-VR
+
+---
+
+## 📄 License
+
+## License
+
+This project is proprietary and protected by copyright.
+
+Viewing is permitted for educational and evaluation purposes only.
+
+No copying, modification, redistribution, or commercial use is allowed without explicit written permission from the author.
+
+© 2026 Smart Agri AI. All Rights Reserved.
