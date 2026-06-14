@@ -583,12 +583,20 @@ https://github.com/Avins-VR
 
 ## 📄 License
 
-## License
+### Proprietary License – All Rights Reserved
 
 This project is proprietary and protected by copyright.
 
-Viewing is permitted for educational and evaluation purposes only.
+✔ Viewing is permitted for educational and evaluation purposes.
 
-No copying, modification, redistribution, or commercial use is allowed without explicit written permission from the author.
+❌ Copying is not permitted.
 
-© 2026 Smart Agri AI. All Rights Reserved.
+❌ Modification is not permitted.
+
+❌ Redistribution is not permitted.
+
+❌ Commercial use is not permitted.
+
+Written permission from the copyright holder is required for any use beyond viewing and evaluation.
+
+© 2026 Smart Agri AI — All Rights Reserved.
