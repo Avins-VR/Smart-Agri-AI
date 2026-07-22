@@ -19,7 +19,6 @@ from services.weather_service import (
 
 weather_bp = Blueprint("weather", __name__, url_prefix="/api/weather")
 
-
 @weather_bp.route("/current", methods=["GET"])
 def current_weather():
     """
